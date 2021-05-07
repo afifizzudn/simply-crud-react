@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Avatar, Button, CssBaseline, TextField, Grid, Box, Typography, Container, FormControl, Select, InputLabel, MenuItem } from '@material-ui/core';
+import { Avatar, Button, CssBaseline, TextField, Grid, Box, Typography, Container, FormControl, Select, InputLabel, MenuItem, CircularProgress } from '@material-ui/core';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 import { makeStyles } from '@material-ui/core/styles';
 import PersonAddOutlinedIcon from '@material-ui/icons/PersonAddOutlined';
@@ -83,7 +83,11 @@ export default function AddEmployee() {
   };
 
   if (!provinces || provinces.length === 0 || loading) {
-    return <div>Loading...</div>;
+    return (
+      <Grid container direction='row' justify='center' alignItems='center' style={{ marginTop: 200 }}>
+        <CircularProgress />
+      </Grid>
+    );
   }
 
   return (
